@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSAPP Lab (01)-Data Lab | Kaleidoscope——万花筒</title><meta name="author" content="Nexisato"><meta name="copyright" content="Nexisato"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 20.04     0. Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- This file bits.c		- The file you will be modifying and handing i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP Lab (01)-Data Lab">
+<meta property="og:url" content="https://nexisato.github.io/2021/03/05/csapp-datalab/index.html">
+<meta property="og:site_name" content="Kaleidoscope——万花筒">
+<meta property="og:description" content="本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 20.04     0. Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- This file bits.c		- The file you will be modifying and handing i">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg">
+<meta property="article:published_time" content="2021-03-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-07T04:59:17.655Z">
+<meta property="article:author" content="Nexisato">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg"><link rel="shortcut icon" href="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Kaleido.png"><link rel="canonical" href="https://nexisato.github.io/2021/03/05/csapp-datalab/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?1c79a70b546e1eccefe56413e83a992a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSAPP Lab (01)-Data Lab',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-07 12:59:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Kaleidoscope——万花筒</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSAPP Lab (01)-Data Lab</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-04T16:00:00.000Z" title="发表于 2021-03-05 00:00:00">2021-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-07T04:59:17.655Z" title="更新于 2022-07-07 12:59:17">2022-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>本文记录了CSAPP配套实验——Data Lab的详情WriteUp</p>
+</blockquote>
+<ul>
+<li>运行环境：
+<ul>
+<li>Ubuntu 20.04</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="0-Directions">0. Directions</h3>
+<ul>
+<li>
+<p><strong>Files</strong>:</p>
+<p>Makefile	- Makes btest, fshow, and ishow<br>
+README		- This file<br>
+bits.c		- The file you will be modifying and handing in<br>
+bits.h		- Header file<br>
+btest.c		- The main btest program<br>
+btest.h	- Used to build btest<br>
+decl.c	- Used to build btest<br>
+tests.c       - Used to build btest<br>
+tests-header.c- Used to build btest<br>
+dlc*		- Rule checking compiler binary (data lab compiler)<br>
+<a target="_blank" rel="noopener" href="http://driver.pl">driver.pl</a>*	- Driver program that uses btest and dlc to autograde bits.c<br>
+<a target="_blank" rel="noopener" href="http://Driverhdrs.pm">Driverhdrs.pm</a>   - Header file for optional “Beat the Prof” contest<br>
+fshow.c		- Utility for examining floating-point representations<br>
+ishow.c		- Utility for examining integer representations</p>
+</li>
+<li>
+<p><strong>Modifying bits.c and checking it for compliance with dlc</strong></p>
+<p><strong>IMPORTANT</strong>: Carefully read the instructions in the bits.c file before you start. These give the coding rules that you will need to follow if you want full credit.</p>
+<p>Use the dlc compiler (./dlc) to automatically check your version of bits.c for compliance with the coding guidelines:</p>
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; .&#x2F;dlc bits.c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>dlc returns silently if there are no problems with your code. Otherwise it prints messages that flag any problems.  Running dlc with the -e switch:</p>
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; .&#x2F;dlc -e bits.c  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>causes dlc to print counts of the number of operators used by each function.</p>
+<p>Once you have a legal solution, you can test it for correctness using the ./btest program.</p>
+</li>
+<li>
+<p><strong>Testing with btest</strong></p>
+<p>The Makefile in this directory compiles your version of bits.c with additional code to create a program (or test harness) named btest.</p>
+<p>To compile and run the btest program, type:</p>
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; make btest
+unix&gt; .&#x2F;btest [optional cmd line args]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>You will need to recompile btest each time you change your bits.c program. When moving from one platform to another, you will want to get rid of the old version of btest and generate a new one.  Use the commands:</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; make clean
+unix&gt; make btest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Btest tests your code for correctness by running millions of test cases on each function.  It tests wide swaths around well known corner cases such as Tmin and zero for integer puzzles, and zero, inf, and the boundary between denormalized and normalized numbers for floating point puzzles. When btest detects an error in one of your functions, it prints out the test that failed, the incorrect result, and the expected result, and then terminates the testing for that function.</p>
+<p><em>Here are the command line options for btest</em>:</p>
+<p>unix&gt; ./btest -h<br>
+Usage: ./btest [-hg] [-r <code>&lt;n&gt;</code>] [-f <code>&lt;name&gt;</code> [-1|-2|-3 <code>&lt;val&gt;</code>]*] [-T <code>&lt;time limit&gt;</code>]<br>
+-1 <code>&lt;val&gt;</code>  Specify first function argument<br>
+-2 <code>&lt;val&gt;</code>  Specify second function argument<br>
+-3 <code>&lt;val&gt;</code>  Specify third function argument<br>
+-f <code>&lt;name&gt;</code> Test only the named function<br>
+-g        Format output for autograding with no error messages<br>
+-h        Print this message<br>
+-r <code>&lt;n&gt;</code>    Give uniform weight of n for all problems<br>
+-T <code>&lt;lim&gt;</code>  Set timeout limit to lim</p>
+<p><em>Examples</em>:</p>
+<p>Test all functions for correctness and print out error messages:<br>
+unix&gt; ./btest</p>
+<p>Test all functions in a compact form with no error messages:<br>
+unix&gt; ./btest -g</p>
+<p>Test function foo for correctness:<br>
+unix&gt; ./btest -f foo</p>
+<p>Test function foo for correctness with specific arguments:<br>
+unix&gt; ./btest -f foo -1 27 -2 0xf</p>
+<p>Btest does not check your code for compliance with the coding guidelines.  Use dlc to do that.</p>
+</li>
+<li>
+<p><strong>Helper Programs</strong></p>
+<p>We have included the ishow and fshow programs to help you decipher integer and floating point representations respectively. Each takes a single decimal or hex number as an argument. To build them type:</p>
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><em>Example usages</em>:</p>
+<h2 id="code￼5"><pre class="line-numbers language-none"><code class="language-none">unix&gt; .&#x2F;ishow 0x27
+Hex &#x3D; 0x00000027,	Signed &#x3D; 39,	Unsigned &#x3D; 39
+
+unix&gt; .&#x2F;ishow 27
+Hex &#x3D; 0x0000001b,	Signed &#x3D; 27,	Unsigned &#x3D; 27
+
+unix&gt; .&#x2F;fshow 0x15213243
+Floating point value 3.255334057e-26
+Bit Representation 0x15213243, sign &#x3D; 0, exponent &#x3D; 0x2a, fraction &#x3D; 0x213243
+Normalized.  +1.2593463659 X 2^(-85)
+
+linux&gt; .&#x2F;fshow 15213243
+Floating point value 2.131829405e-38
+Bit Representation 0x00e822bb, sign &#x3D; 0, exponent &#x3D; 0x01, fraction &#x3D; 0x6822bb
+Normalized.  +1.8135598898 X 2^(-126)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></h2>
+<h3 id="1-Writeup">1. Writeup</h3>
+<ol>
+<li>
+<p><strong>bitXor</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * bitXor - x^y using only ~ and &amp; 
+ *   Example: bitXor(4, 5) = 1
+ *   Legal ops: ~ &amp;
+ *   Max ops: 14
+ *   Rating: 1
+ */</span>
+<span class="token keyword">int</span> <span class="token function">bitXor</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> com1 <span class="token operator">=</span> x <span class="token operator">&amp;</span> y<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> com2 <span class="token operator">=</span> <span class="token operator">~</span>x <span class="token operator">&amp;</span> <span class="token operator">~</span>y<span class="token punctuation">;</span> 
+  <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token operator">~</span>com1 <span class="token operator">&amp;</span> <span class="token operator">~</span>com2<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>布尔代数公式化简一下即可。</p>
+</li>
+<li>
+<p><strong>tmin</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * tmin - return minimum two's complement integer 
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
+ *   Max ops: 4
+ *   Rating: 1
+ */</span>
+<span class="token keyword">int</span> <span class="token function">tmin</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  res <span class="token operator">&lt;&lt;=</span> <span class="token number">31</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+补码表示法最小值，根据补码的定义，左移到最高位即可。
+
+3. **isTmax**
+
+&#96;&#96;&#96;C
+&#x2F;*
+ * isTmax - returns 1 if x is the maximum, two&#39;s complement number,
+ *     and 0 otherwise 
+ *   Legal ops: ! ~ &amp; ^ | +
+ *   Max ops: 10
+ *   Rating: 1
+ *&#x2F;
+int isTmax(int x) &#123;
+  int tmin &#x3D; x + 1;&#x2F;&#x2F;10000000
+  x &#x3D; x + tmin; &#x2F;&#x2F;11111111
+  x &#x3D; ~x;&#x2F;&#x2F;00000000
+  tmin &#x3D; !tmin;&#x2F;&#x2F;0, if x&#x3D;&#x3D;0xffffffff, tmin &#x3D; 1
+  x &#x3D; x + tmin;&#x2F;&#x2F;0 , if x &#x3D;&#x3D; 0xffffffff, x &#x3D; 1
+  return !x;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>tmax=0x7FFFFFFF</p>
+<p>tmin=0x10000000=tmax+1</p>
+<p>对于0xFFFFFFFF，tmin=0x00000000，注意到此时对tmin取**逻辑非！<strong>得到结果为1；若x为tmax则对tmin进行</strong>！**运算后得到的结果应当为0</p>
+<ol start="4">
+<li>
+<p><strong>allOddBits</strong></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;* 
+ * allOddBits - return 1 if all odd-numbered bits in word set to 1
+ *   where bits are numbered from 0 (least significant) to 31 (most significant)
+ *   Examples allOddBits(0xFFFFFFFD) &#x3D; 0, allOddBits(0xAAAAAAAA) &#x3D; 1
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 12
+ *   Rating: 2
+ *&#x2F;
+int allOddBits(int x) &#123;
+  int base &#x3D; 0xAA;
+  base +&#x3D; base &lt;&lt; 8;
+base +&#x3D; base &lt;&lt; 16;
+  int tmp &#x3D; x &amp; base; &#x2F;&#x2F;tmp &#x3D;&#x3D; base if satisfied
+int res &#x3D; !(tmp ^ base);
+  return res;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>negate</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * negate - return -x 
+ *   Example: negate(1) = -1.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
+ *   Max ops: 5
+ *   Rating: 2
+ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p>int negate(int x) {<br>
+/<em>Definition of two’s complement</em>/<br>
+int res = ~x + 1;<br>
+return res;<br>
+}</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">
+6. **isAsciiDigit**
+
+&#96;&#96;&#96;C
+&#x2F;* 
+ * isAsciiDigit - return 1 if 0x30 &lt;&#x3D; x &lt;&#x3D; 0x39 (ASCII codes for characters &#39;0&#39; to &#39;9&#39;)
+ *   Example: isAsciiDigit(0x35) &#x3D; 1.
+ *            isAsciiDigit(0x3a) &#x3D; 0.
+ *            isAsciiDigit(0x05) &#x3D; 0.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 15
+ *   Rating: 3
+ *&#x2F;
+int isAsciiDigit(int x) &#123;
+  &#x2F;*
+  x - 0x30 &gt;&#x3D; 0 &amp;&amp; 0x39 - x &gt;&#x3D; 0
+  move right 31 bits to check if opr_res &gt;&#x3D; 0
+  *&#x2F;
+  int a &#x3D; ~0x30 + 1;
+  int l &#x3D; x + a;
+  x &#x3D; ~x + 1;
+  int r &#x3D; 0x39 + x;
+int res &#x3D; !(l &gt;&gt; 31) &amp; !(r &gt;&gt; 31);
+  return res;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>
+<p><strong>conditional</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * conditional - same as x ? y : z 
+ *   Example: conditional(2,4,5) = 4
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
+ *   Max ops: 16
+ *   Rating: 3
+ */</span>
+<span class="token keyword">int</span> <span class="token function">conditional</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> z<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">/*
+  C语言默认类型执行逻辑左移和算术右移
+*/</span>
+  x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">!</span>x <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">;</span><span class="token comment">//produce 0x0 or 0xffffffff</span>
+  <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">&amp;</span> <span class="token operator">~</span>x<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>z <span class="token operator">&amp;</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>isLessOrEqual</strong></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;* 
+ * isLessOrEqual - if x &lt;&#x3D; y  then return 1, else return 0 
+ *   Example: isLessOrEqual(4,5) &#x3D; 1.
+ *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+ *   Max ops: 24
+ *   Rating: 3
+ *&#x2F;
+int isLessOrEqual(int x, int y) &#123;
+  &#x2F;*
+  1. judge the sign of two nums
+  2. x_sign &lt; 0 and y_sign &gt; 0
+  OR x_sign the same as y_sign and y-x &gt;&#x3D; 0 (which means (y-x)&gt;&gt;31 &#x3D;&#x3D; 0)
+  *&#x2F;
+  int x_sign &#x3D; x &gt;&gt; 31;
+  int y_sign &#x3D; y &gt;&gt; 31;
+  int res &#x3D; (x_sign &amp; !y_sign) | (!(x_sign ^ y_sign) &amp; !((y + ~x + 1) &gt;&gt; 31));
+  return res;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>logicalNeg</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * logicalNeg - implement the ! operator, using all of 
+ *              the legal operators except !
+ *   Examples: logicalNeg(3) = 0, logicalNeg(0) = 1
+ *   Legal ops: ~ &amp; ^ | + &lt;&lt; >>
+ *   Max ops: 12
+ *   Rating: 4 
+ */</span>
+<span class="token keyword">int</span> <span class="token function">logicalNeg</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">/*
+  neg: sign bit is not 0
+  pos: plus tmax to overflow except 0 
+  get res of 1 for not 0, and 0 for 0
+  */</span>
+  <span class="token keyword">int</span> tmax <span class="token operator">=</span> <span class="token operator">~</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> sign <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x01</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> res <span class="token operator">=</span> sign <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">+</span> tmax<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x01</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  res <span class="token operator">=</span> res <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>howmanyBits</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* howManyBits - return the minimum number of bits required to represent x in
+ *             two's complement
+ *  Examples: howManyBits(12) = 5
+ *            howManyBits(298) = 10
+ *            howManyBits(-5) = 4
+ *            howManyBits(0)  = 1
+ *            howManyBits(-1) = 1
+ *            howManyBits(0x80000000) = 32
+ *  Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
+ *  Max ops: 90
+ *  Rating: 4
+ */</span>
+<span class="token keyword">int</span> <span class="token function">howManyBits</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">/*
+  for positive num: the last bit of 1 plus the sign bit
+  for negative num: the last bit of 0
+  */</span>
+  <span class="token keyword">int</span> sign <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> <span class="token punctuation">(</span>sign <span class="token operator">&amp;</span> <span class="token operator">~</span>x<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token operator">~</span>sign <span class="token operator">&amp;</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//complement the bit</span>
+  <span class="token keyword">int</span> b16<span class="token punctuation">,</span> b8<span class="token punctuation">,</span> b4<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> b1<span class="token punctuation">,</span> b0<span class="token punctuation">;</span>
+  b16 <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span><span class="token comment">//to check if the highest 16 bits include '1' bit, if including, then x move 16 bit to the R direction</span>
+  x <span class="token operator">=</span> x <span class="token operator">>></span> b16<span class="token punctuation">;</span>
+  b8 <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> x <span class="token operator">>></span> b8<span class="token punctuation">;</span>
+  b4 <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> x <span class="token operator">>></span> b4<span class="token punctuation">;</span>
+  b2 <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> x <span class="token operator">>></span> b2<span class="token punctuation">;</span>
+  b1 <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> x <span class="token operator">>></span> b1<span class="token punctuation">;</span>
+  b0 <span class="token operator">=</span> x<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> res <span class="token operator">=</span> b16 <span class="token operator">+</span> b8 <span class="token operator">+</span> b4 <span class="token operator">+</span> b2 <span class="token operator">+</span> b1 <span class="token operator">+</span> b0 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>太菜了orz…这题看的题解。基本思路类似于二分。</p>
+</li>
+<li>
+<p><strong>floatScale2</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*  
+ * floatScale2 - Return bit-level equivalent of expression 2*f for
+ *   floating point argument f.
+ *   Both the argument and result are passed as unsigned int's, but
+ *   they are to be interpreted as the bit-level representation of
+ *   single-precision floating point values.
+ *   When argument is NaN, return argument
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */</span>
+<span class="token keyword">unsigned</span> <span class="token function">floatScale2</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> uf<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> exp <span class="token operator">=</span> <span class="token punctuation">(</span>uf <span class="token operator">&amp;</span> <span class="token number">0x7f800000</span><span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">23</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> sign <span class="token operator">=</span> uf <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">==</span> <span class="token number">255</span><span class="token punctuation">)</span> 
+    <span class="token keyword">return</span> uf<span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>uf <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> sign<span class="token punctuation">;</span><span class="token comment">//not regular</span>
+  exp <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">==</span> <span class="token number">255</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> sign <span class="token operator">|</span> <span class="token number">0x7f800000</span><span class="token punctuation">;</span><span class="token comment">//add to not regular</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>uf <span class="token operator">&amp;</span> <span class="token number">0x807fffff</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>exp <span class="token operator">&lt;&lt;</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>floatFloat2Int</strong>(没太看懂)</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * floatFloat2Int - Return bit-level equivalent of expression (int) f
+ *   for floating point argument f.
+ *   Argument is passed as unsigned int, but
+ *   it is to be interpreted as the bit-level representation of a
+ *   single-precision floating point value.
+ *   Anything out of range (including NaN and infinity) should return
+ *   0x80000000u.
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while
+ *   Max ops: 30
+ *   Rating: 4
+ */</span>
+<span class="token keyword">int</span> <span class="token function">floatFloat2Int</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> uf<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">unsigned</span> exp <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>uf <span class="token operator">&amp;</span> <span class="token number">0x7f800000</span><span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">23</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">127</span><span class="token punctuation">;</span>
+  <span class="token keyword">unsigned</span> sign <span class="token operator">=</span> uf <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">;</span>
+  <span class="token keyword">unsigned</span> frac <span class="token operator">=</span> uf <span class="token operator">&amp;</span> <span class="token number">0x007fffff</span> <span class="token operator">|</span> <span class="token number">0x00800000</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>uf <span class="token operator">&amp;</span> <span class="token number">0x7fffffff</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">></span> <span class="token number">31</span><span class="token punctuation">)</span> 
+    <span class="token keyword">return</span> <span class="token number">0x80000000u</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">></span> <span class="token number">23</span><span class="token punctuation">)</span>
+    frac <span class="token operator">&lt;&lt;=</span> <span class="token punctuation">(</span>exp <span class="token operator">-</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>
+    frac <span class="token operator">>>=</span> <span class="token punctuation">(</span><span class="token number">23</span> <span class="token operator">-</span> exp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token punctuation">(</span>frac <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">^</span> sign<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> frac<span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>frac <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token number">0x80000000</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>
+    <span class="token keyword">return</span> <span class="token operator">~</span>frac <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><s>此题看的题解，我太菜了orz</s></p>
+<p>我们将浮点数的符号、阶码、尾数分别拆开</p>
+<ul>
+<li>若阶码E部分大于31小于0，可以直接返回异常值</li>
+<li>对frac直接移位，再判断是否溢出。</li>
+</ul>
+</li>
+<li>
+<p><strong>floatPower2</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
+ * floatPower2 - Return bit-level equivalent of the expression 2.0^x
+ *   (2.0 raised to the power x) for any 32-bit integer x.
+ *
+ *   The unsigned value that is returned should have the identical bit
+ *   representation as the single-precision floating-point number 2.0^x.
+ *   If the result is too small to be represented as a denorm, return
+ *   0. If too large, return +INF.
+ * 
+ *   Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. Also if, while 
+ *   Max ops: 30 
+ *   Rating: 4
+ */</span>
+<span class="token keyword">unsigned</span> <span class="token function">floatPower2</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> INF <span class="token operator">=</span> <span class="token number">0xff</span> <span class="token operator">&lt;&lt;</span> <span class="token number">23</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> exp <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">127</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">>=</span> <span class="token number">255</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> INF<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>exp <span class="token operator">&lt;&lt;</span> <span class="token number">23</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">0x7f800000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>浮点数的定义如下</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mn>2</mn><mi>E</mi></msup><mo>×</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">V = 2^E \times M
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9747em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></span></p>
+<p>对于非规格化数值来讲，设定 <code>M=0</code>即可，因此我们只需要关注阶码E，加上Bias偏置值即可。</p>
+</li>
+</ol>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nexisato.github.io">Nexisato</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nexisato.github.io/2021/03/05/csapp-datalab/">https://nexisato.github.io/2021/03/05/csapp-datalab/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nexisato.github.io" target="_blank">Kaleidoscope——万花筒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/07/tech-xduautoreport/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/AutoXDU.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AutoXDUNCovReport——图文教程</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/04/diary-20210304/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">站在交叉路口前</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nexisato</div><div class="author-info__description">我们的故事进行到哪了?</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/nexisato" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nexisato0810@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/nexisato/" target="_blank" title="LeetCode Pages"><i class="fas fa-code"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Directions"><span class="toc-number">1.</span> <span class="toc-text">0. Directions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code%EF%BF%BC5"><span class="toc-number"></span> <span class="toc-text">unix&gt; .&#x2F;ishow 0x27
+Hex &#x3D; 0x00000027,	Signed &#x3D; 39,	Unsigned &#x3D; 39
+
+unix&gt; .&#x2F;ishow 27
+Hex &#x3D; 0x0000001b,	Signed &#x3D; 27,	Unsigned &#x3D; 27
+
+unix&gt; .&#x2F;fshow 0x15213243
+Floating point value 3.255334057e-26
+Bit Representation 0x15213243, sign &#x3D; 0, exponent &#x3D; 0x2a, fraction &#x3D; 0x213243
+Normalized.  +1.2593463659 X 2^(-85)
+
+linux&gt; .&#x2F;fshow 15213243
+Floating point value 2.131829405e-38
+Bit Representation 0x00e822bb, sign &#x3D; 0, exponent &#x3D; 0x01, fraction &#x3D; 0x6822bb
+Normalized.  +1.8135598898 X 2^(-126)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Writeup"><span class="toc-number">1.</span> <span class="toc-text">1. Writeup</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Nexisato</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '0YTDhGSKuv7oYt5awmdHaH2w-gzGzoHsz',
+      appKey: 'aH2eqIdUznwmTHTuJjGEVqrz',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div></div></body></html>
