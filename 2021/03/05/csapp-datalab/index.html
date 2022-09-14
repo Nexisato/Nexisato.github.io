@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSAPP Lab (01)-Data Lab | Kaleidoscope——万花筒</title><meta name="author" content="Nexisato"><meta name="copyright" content="Nexisato"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 20.04     0. Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- This file bits.c		- The file you will be modifying and handing i">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSAPP Lab (01)-Data Lab | Kaleidoscope——万花筒</title><meta name="author" content="Nexisato"><meta name="copyright" content="Nexisato"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="update: 2022-07-19：研究生入学前重新修炼一遍内功，以及在WSL2上使用Ubuntu22.04进行重新实验    本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 22.04     Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- Th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP Lab (01)-Data Lab">
 <meta property="og:url" content="https://nexisato.github.io/2021/03/05/csapp-datalab/index.html">
 <meta property="og:site_name" content="Kaleidoscope——万花筒">
-<meta property="og:description" content="本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 20.04     0. Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- This file bits.c		- The file you will be modifying and handing i">
+<meta property="og:description" content="update: 2022-07-19：研究生入学前重新修炼一遍内功，以及在WSL2上使用Ubuntu22.04进行重新实验    本文记录了CSAPP配套实验——Data Lab的详情WriteUp   运行环境：  Ubuntu 22.04     Directions   Files: Makefile	- Makes btest, fshow, and ishow README		- Th">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg">
 <meta property="article:published_time" content="2021-03-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-07T04:59:17.655Z">
+<meta property="article:modified_time" content="2022-07-19T11:11:07.683Z">
 <meta property="article:author" content="Nexisato">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg"><link rel="shortcut icon" href="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Kaleido.png"><link rel="canonical" href="https://nexisato.github.io/2021/03/05/csapp-datalab/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
@@ -59,7 +59,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-07-07 12:59:17'
+  postUpdate: '2022-07-19 19:11:07'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -148,18 +148,22 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Kaleidoscope——万花筒</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSAPP Lab (01)-Data Lab</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-04T16:00:00.000Z" title="发表于 2021-03-05 00:00:00">2021-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-07T04:59:17.655Z" title="更新于 2022-07-07 12:59:17">2022-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Kaleidoscope——万花筒</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSAPP Lab (01)-Data Lab</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-04T16:00:00.000Z" title="发表于 2021-03-05 00:00:00">2021-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-19T11:11:07.683Z" title="更新于 2022-07-19 19:11:07">2022-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>update: 2022-07-19：研究生入学前重新修炼一遍内功，以及在WSL2上使用Ubuntu22.04进行重新实验</p>
+</blockquote>
+<hr>
+<blockquote>
 <p>本文记录了CSAPP配套实验——Data Lab的详情WriteUp</p>
 </blockquote>
 <ul>
 <li>运行环境：
 <ul>
-<li>Ubuntu 20.04</li>
+<li>Ubuntu 22.04</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h3 id="0-Directions">0. Directions</h3>
+<h2 id="Directions">Directions</h2>
 <ul>
 <li>
 <p><strong>Files</strong>:</p>
@@ -227,7 +231,7 @@ unix&gt; ./btest -f foo -1 27 -2 0xf</p>
 <p>We have included the ishow and fshow programs to help you decipher integer and floating point representations respectively. Each takes a single decimal or hex number as an argument. To build them type:</p>
 <pre class="line-numbers language-none"><code class="language-none">unix&gt; make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><em>Example usages</em>:</p>
-<h2 id="code￼5"><pre class="line-numbers language-none"><code class="language-none">unix&gt; .&#x2F;ishow 0x27
+<pre class="line-numbers language-none"><code class="language-none">unix&gt; .&#x2F;ishow 0x27
 Hex &#x3D; 0x00000027,	Signed &#x3D; 39,	Unsigned &#x3D; 39
 
 unix&gt; .&#x2F;ishow 27
@@ -241,11 +245,11 @@ Normalized.  +1.2593463659 X 2^(-85)
 linux&gt; .&#x2F;fshow 15213243
 Floating point value 2.131829405e-38
 Bit Representation 0x00e822bb, sign &#x3D; 0, exponent &#x3D; 0x01, fraction &#x3D; 0x6822bb
-Normalized.  +1.8135598898 X 2^(-126)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></h2>
-<h3 id="1-Writeup">1. Writeup</h3>
-<ol>
-<li>
-<p><strong>bitXor</strong></p>
+Normalized.  +1.8135598898 X 2^(-126)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="Writeup">Writeup</h2>
+<h3 id="1-bitXor">1. bitXor</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * bitXor - x^y using only ~ and &amp; 
  *   Example: bitXor(4, 5) = 1
@@ -260,9 +264,7 @@ Normalized.  +1.8135598898 X 2^(-126)<span aria-hidden="true" class="line-number
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>布尔代数公式化简一下即可。</p>
-</li>
-<li>
-<p><strong>tmin</strong></p>
+<h3 id="2-tmin">2. tmin</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * tmin - return minimum two's complement integer 
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
@@ -272,37 +274,29 @@ Normalized.  +1.8135598898 X 2^(-126)<span aria-hidden="true" class="line-number
 <span class="token keyword">int</span> <span class="token function">tmin</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
   res <span class="token operator">&lt;&lt;=</span> <span class="token number">31</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> res<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<p>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-补码表示法最小值，根据补码的定义，左移到最高位即可。
-
-3. **isTmax**
-
-&#96;&#96;&#96;C
-&#x2F;*
- * isTmax - returns 1 if x is the maximum, two&#39;s complement number,
- *     and 0 otherwise 
- *   Legal ops: ! ~ &amp; ^ | +
- *   Max ops: 10
- *   Rating: 1
- *&#x2F;
-int isTmax(int x) &#123;
-  int tmin &#x3D; x + 1;&#x2F;&#x2F;10000000
-  x &#x3D; x + tmin; &#x2F;&#x2F;11111111
-  x &#x3D; ~x;&#x2F;&#x2F;00000000
-  tmin &#x3D; !tmin;&#x2F;&#x2F;0, if x&#x3D;&#x3D;0xffffffff, tmin &#x3D; 1
-  x &#x3D; x + tmin;&#x2F;&#x2F;0 , if x &#x3D;&#x3D; 0xffffffff, x &#x3D; 1
-  return !x;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>补码表示法最小值，根据补码的定义，左移到最高位即可。</p>
+<h3 id="3-isTmax">3. isTmax</h3>
+  <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
+  * isTmax - returns 1 if x is the maximum, two's complement number,
+  *     and 0 otherwise 
+  *   Legal ops: ! ~ &amp; ^ | +
+  *   Max ops: 10
+  *   Rating: 1
+  */</span>
+ <span class="token keyword">int</span> <span class="token function">isTmax</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">int</span> tmin <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//10000000</span>
+   x <span class="token operator">=</span> x <span class="token operator">+</span> tmin<span class="token punctuation">;</span> <span class="token comment">//11111111</span>
+   x <span class="token operator">=</span> <span class="token operator">~</span>x<span class="token punctuation">;</span><span class="token comment">//00000000</span>
+   tmin <span class="token operator">=</span> <span class="token operator">!</span>tmin<span class="token punctuation">;</span><span class="token comment">//0, if x==0xffffffff, tmin = 1</span>
+   x <span class="token operator">=</span> x <span class="token operator">+</span> tmin<span class="token punctuation">;</span><span class="token comment">//0 , if x == 0xffffffff, x = 1</span>
+   <span class="token keyword">return</span> <span class="token operator">!</span>x<span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>tmax=0x7FFFFFFF</p>
 <p>tmin=0x10000000=tmax+1</p>
 <p>对于0xFFFFFFFF，tmin=0x00000000，注意到此时对tmin取**逻辑非！<strong>得到结果为1；若x为tmax则对tmin进行</strong>！**运算后得到的结果应当为0</p>
-<ol start="4">
-<li>
-<p><strong>allOddBits</strong></p>
+<h3 id="4-allOddBits">4. allOddBits</h3>
 <pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
  *   where bits are numbered from 0 (least significant) to 31 (most significant)
@@ -312,58 +306,49 @@ int isTmax(int x) &#123;
  *   Rating: 2
  *&#x2F;
 int allOddBits(int x) &#123;
-  int base &#x3D; 0xAA;
-  base +&#x3D; base &lt;&lt; 8;
-base +&#x3D; base &lt;&lt; 16;
-  int tmp &#x3D; x &amp; base; &#x2F;&#x2F;tmp &#x3D;&#x3D; base if satisfied
-int res &#x3D; !(tmp ^ base);
-  return res;
+	int base &#x3D; 0xAA;
+	base +&#x3D; base &lt;&lt; 8;
+    base +&#x3D; base &lt;&lt; 16;
+   	int tmp &#x3D; x &amp; base; &#x2F;&#x2F;tmp &#x3D;&#x3D; base if satisfied
+    int res &#x3D; !(tmp ^ base);
+    return res;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>negate</strong></p>
+<h3 id="5-negate">5. negate</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * negate - return -x 
  *   Example: negate(1) = -1.
  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; >>
  *   Max ops: 5
  *   Rating: 2
- */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<p>int negate(int x) {<br>
-/<em>Definition of two’s complement</em>/<br>
-int res = ~x + 1;<br>
-return res;<br>
-}</p>
-<pre class="line-numbers language-C" data-language="C"><code class="language-C">
-6. **isAsciiDigit**
-
-&#96;&#96;&#96;C
-&#x2F;* 
- * isAsciiDigit - return 1 if 0x30 &lt;&#x3D; x &lt;&#x3D; 0x39 (ASCII codes for characters &#39;0&#39; to &#39;9&#39;)
- *   Example: isAsciiDigit(0x35) &#x3D; 1.
- *            isAsciiDigit(0x3a) &#x3D; 0.
- *            isAsciiDigit(0x05) &#x3D; 0.
- *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
- *   Max ops: 15
- *   Rating: 3
- *&#x2F;
-int isAsciiDigit(int x) &#123;
-  &#x2F;*
-  x - 0x30 &gt;&#x3D; 0 &amp;&amp; 0x39 - x &gt;&#x3D; 0
-  move right 31 bits to check if opr_res &gt;&#x3D; 0
+ */</span>
+  <span class="token keyword">int</span> <span class="token function">negate</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">/*Definition of two's complement*/</span>
+      <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token operator">~</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-isAsciiDigit">6. isAsciiDigit</h3>
+  <pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;* 
+  * isAsciiDigit - return 1 if 0x30 &lt;&#x3D; x &lt;&#x3D; 0x39 (ASCII codes for characters &#39;0&#39; to &#39;9&#39;)
+  *   Example: isAsciiDigit(0x35) &#x3D; 1.
+  *            isAsciiDigit(0x3a) &#x3D; 0.
+  *            isAsciiDigit(0x05) &#x3D; 0.
+  *   Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+  *   Max ops: 15
+  *   Rating: 3
   *&#x2F;
-  int a &#x3D; ~0x30 + 1;
-  int l &#x3D; x + a;
-  x &#x3D; ~x + 1;
-  int r &#x3D; 0x39 + x;
-int res &#x3D; !(l &gt;&gt; 31) &amp; !(r &gt;&gt; 31);
-  return res;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="7">
-<li>
-<p><strong>conditional</strong></p>
+ int isAsciiDigit(int x) &#123;
+   &#x2F;*
+   x - 0x30 &gt;&#x3D; 0 &amp;&amp; 0x39 - x &gt;&#x3D; 0
+   move right 31 bits to check if opr_res &gt;&#x3D; 0
+   *&#x2F;
+   int a &#x3D; ~0x30 + 1;
+   int l &#x3D; x + a;
+   x &#x3D; ~x + 1;
+   int r &#x3D; 0x39 + x;
+ int res &#x3D; !(l &gt;&gt; 31) &amp; !(r &gt;&gt; 31);
+   return res;
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="7-conditional">7. conditional</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * conditional - same as x ? y : z 
  *   Example: conditional(2,4,5) = 4
@@ -379,9 +364,7 @@ int res &#x3D; !(l &gt;&gt; 31) &amp; !(r &gt;&gt; 31);
   <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">&amp;</span> <span class="token operator">~</span>x<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>z <span class="token operator">&amp;</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>isLessOrEqual</strong></p>
+<h3 id="8-isLessOrEqual">8. isLessOrEqual</h3>
 <pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;* 
  * isLessOrEqual - if x &lt;&#x3D; y  then return 1, else return 0 
  *   Example: isLessOrEqual(4,5) &#x3D; 1.
@@ -400,9 +383,7 @@ int isLessOrEqual(int x, int y) &#123;
   int res &#x3D; (x_sign &amp; !y_sign) | (!(x_sign ^ y_sign) &amp; !((y + ~x + 1) &gt;&gt; 31));
   return res;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>logicalNeg</strong></p>
+<h3 id="9-logicalNeg">9. logicalNeg</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * logicalNeg - implement the ! operator, using all of 
  *              the legal operators except !
@@ -423,9 +404,7 @@ int isLessOrEqual(int x, int y) &#123;
   res <span class="token operator">=</span> res <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>howmanyBits</strong></p>
+<h3 id="10-howManyBits">10. howManyBits</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
  *  Examples: howManyBits(12) = 5
@@ -461,9 +440,7 @@ int isLessOrEqual(int x, int y) &#123;
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>太菜了orz…这题看的题解。基本思路类似于二分。</p>
-</li>
-<li>
-<p><strong>floatScale2</strong></p>
+<h3 id="11-floatScale2">11. floatScale2</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*  
  * floatScale2 - Return bit-level equivalent of expression 2*f for
  *   floating point argument f.
@@ -487,9 +464,7 @@ int isLessOrEqual(int x, int y) &#123;
     <span class="token keyword">return</span> sign <span class="token operator">|</span> <span class="token number">0x7f800000</span><span class="token punctuation">;</span><span class="token comment">//add to not regular</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>uf <span class="token operator">&amp;</span> <span class="token number">0x807fffff</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>exp <span class="token operator">&lt;&lt;</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p><strong>floatFloat2Int</strong>(没太看懂)</p>
+<h3 id="12-floatFloat2Int">12. floatFloat2Int</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * floatFloat2Int - Return bit-level equivalent of expression (int) f
  *   for floating point argument f.
@@ -529,9 +504,7 @@ int isLessOrEqual(int x, int y) &#123;
 <li>若阶码E部分大于31小于0，可以直接返回异常值</li>
 <li>对frac直接移位，再判断是否溢出。</li>
 </ul>
-</li>
-<li>
-<p><strong>floatPower2</strong></p>
+<h3 id="13-floatPower2">13. floatPower2</h3>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/* 
  * floatPower2 - Return bit-level equivalent of the expression 2.0^x
  *   (2.0 raised to the power x) for any 32-bit integer x.
@@ -558,25 +531,7 @@ int isLessOrEqual(int x, int y) &#123;
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mn>2</mn><mi>E</mi></msup><mo>×</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">V = 2^E \times M
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9747em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></span></p>
 <p>对于非规格化数值来讲，设定 <code>M=0</code>即可，因此我们只需要关注阶码E，加上Bias偏置值即可。</p>
-</li>
-</ol>
-</li>
-</ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nexisato.github.io">Nexisato</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nexisato.github.io/2021/03/05/csapp-datalab/">https://nexisato.github.io/2021/03/05/csapp-datalab/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nexisato.github.io" target="_blank">Kaleidoscope——万花筒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/07/tech-xduautoreport/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/AutoXDU.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AutoXDUNCovReport——图文教程</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/04/diary-20210304/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">站在交叉路口前</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nexisato</div><div class="author-info__description">我们的故事进行到哪了?</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/nexisato" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nexisato0810@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/nexisato/" target="_blank" title="LeetCode Pages"><i class="fas fa-code"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Directions"><span class="toc-number">1.</span> <span class="toc-text">0. Directions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code%EF%BF%BC5"><span class="toc-number"></span> <span class="toc-text">unix&gt; .&#x2F;ishow 0x27
-Hex &#x3D; 0x00000027,	Signed &#x3D; 39,	Unsigned &#x3D; 39
-
-unix&gt; .&#x2F;ishow 27
-Hex &#x3D; 0x0000001b,	Signed &#x3D; 27,	Unsigned &#x3D; 27
-
-unix&gt; .&#x2F;fshow 0x15213243
-Floating point value 3.255334057e-26
-Bit Representation 0x15213243, sign &#x3D; 0, exponent &#x3D; 0x2a, fraction &#x3D; 0x213243
-Normalized.  +1.2593463659 X 2^(-85)
-
-linux&gt; .&#x2F;fshow 15213243
-Floating point value 2.131829405e-38
-Bit Representation 0x00e822bb, sign &#x3D; 0, exponent &#x3D; 0x01, fraction &#x3D; 0x6822bb
-Normalized.  +1.8135598898 X 2^(-126)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Writeup"><span class="toc-number">1.</span> <span class="toc-text">1. Writeup</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Nexisato</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nexisato.github.io">Nexisato</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nexisato.github.io/2021/03/05/csapp-datalab/">https://nexisato.github.io/2021/03/05/csapp-datalab/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nexisato.github.io" target="_blank">Kaleidoscope——万花筒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/07/tech-xduautoreport/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/AutoXDU.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AutoXDUNCovReport——图文教程</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/04/diary-20210304/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">站在交叉路口前</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Nexisato</div><div class="author-info__description">我们的故事进行到哪了?</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/nexisato" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nexisato0810@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/nexisato/" target="_blank" title="LeetCode Pages"><i class="fas fa-code"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Directions"><span class="toc-number">1.</span> <span class="toc-text">Directions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writeup"><span class="toc-number">2.</span> <span class="toc-text">Writeup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-bitXor"><span class="toc-number">2.1.</span> <span class="toc-text">1. bitXor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-tmin"><span class="toc-number">2.2.</span> <span class="toc-text">2. tmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-isTmax"><span class="toc-number">2.3.</span> <span class="toc-text">3. isTmax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-allOddBits"><span class="toc-number">2.4.</span> <span class="toc-text">4. allOddBits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-negate"><span class="toc-number">2.5.</span> <span class="toc-text">5. negate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-isAsciiDigit"><span class="toc-number">2.6.</span> <span class="toc-text">6. isAsciiDigit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-conditional"><span class="toc-number">2.7.</span> <span class="toc-text">7. conditional</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-isLessOrEqual"><span class="toc-number">2.8.</span> <span class="toc-text">8. isLessOrEqual</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-logicalNeg"><span class="toc-number">2.9.</span> <span class="toc-text">9. logicalNeg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-howManyBits"><span class="toc-number">2.10.</span> <span class="toc-text">10. howManyBits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-floatScale2"><span class="toc-number">2.11.</span> <span class="toc-text">11. floatScale2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-floatFloat2Int"><span class="toc-number">2.12.</span> <span class="toc-text">12. floatFloat2Int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-floatPower2"><span class="toc-number">2.13.</span> <span class="toc-text">13. floatPower2</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Nexisato</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
