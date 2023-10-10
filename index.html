@@ -1,22 +1,14 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CaddiesNew's Blog - Blog by Nexisato</title><meta name="author" content="Nexisato"><meta name="copyright" content="Nexisato"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
-<meta property="og:title" content="CaddiesNew&#39;s Blog">
-<meta property="og:url" content="https://nexisato.github.io/index.html">
-<meta property="og:site_name" content="CaddiesNew&#39;s Blog">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG">
-<meta property="article:author" content="Nexisato">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG"><link rel="shortcut icon" href="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Kaleido.png"><link rel="canonical" href="https://nexisato.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CaddiesNew's Blog - Blog by Nexisato</title><meta name="author" content="Nexisato"><meta name="copyright" content="Nexisato"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description"><link rel="shortcut icon" href="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Kaleido.png"><link rel="canonical" href="https://nexisato.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?1c79a70b546e1eccefe56413e83a992a";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-</script><script>const GLOBAL_CONFIG = { 
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
   noticeOutdate: undefined,
   highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
@@ -30,7 +22,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -40,85 +32,96 @@
   copyright: undefined,
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
   islazyload: true,
-  isAnchor: false
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'CaddiesNew\'s Blog',
   isPost: false,
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-10-10 16:44:25'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
+  postUpdate: '2023-10-10 23:14:43'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
       }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
         document.documentElement.setAttribute('data-theme', 'dark')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
       }
-      win.activateLightMode = function () {
+      win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
@@ -126,9 +129,9 @@
       }
       const t = saveToLocal.get('theme')
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
       const asideStatus = saveToLocal.get('aside-status')
       if (asideStatus !== undefined) {
         if (asideStatus === 'hide') {
@@ -138,20 +141,20 @@
         }
       }
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
       }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/bg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CaddiesNew's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">CaddiesNew's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/nexisato" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nexisato0810@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/nexisato/" target="_blank" title="LeetCode Pages"><i class="fas fa-code"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/25/paper-20220325/" title="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20220327163509534.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/25/paper-20220325/" title="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection">【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T16:00:00.000Z" title="发表于 2022-03-25 00:00:00">2022-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/1.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/bg.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="CaddiesNew's Blog"><span class="site-name">CaddiesNew's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">CaddiesNew's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/nexisato" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nexisato0810@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/nexisato/" target="_blank" title="LeetCode Pages"><i class="fas fa-code"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/25/paper-20220325/" title="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20220327163509534.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/25/paper-20220325/" title="【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection">【论文阅读·ImageDenoising】NBNet:Noise Basis Learning for Image Denoising with Subspace Projection</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-24T16:00:00.000Z" title="发表于 2022-03-25 00:00:00">2022-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810 AT gmail DOT com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Shen Cheng, Yuanzhi Wang, Haibin Huang. 来自旷视&amp;快手&amp;UESTC团队
 【一句话总结】：在UNet中加投影注意力层提升去噪效果
 【repo】：https://github.com/megvii-research/NBNet
 【Introduction】
-​	以加性噪声为例，图像去噪的主要目的是从有噪声 n\textbf{n}n 的图像 y=x+n\textbf{y} = \textbf{x} + \textbf{n}y=x+n 中恢复得到一张干净的图像 x\textbf{x}x，但是由于 $\textbf{x} $ 和 n\textbf{n}n 的不确定性，二者是很难被分离开的. 传统的去噪方法NLM、BM3D和小波变换等利用图像和噪声模型的先验知识进行去噪，DNN则是从训练数据中学 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/02/20/tools-weblists/" title="-lks-良心到难以置信的网站推荐"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="-lks-良心到难以置信的网站推荐"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/20/tools-weblists/" title="-lks-良心到难以置信的网站推荐">-lks-良心到难以置信的网站推荐</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-19T16:00:00.000Z" title="发表于 2022-02-20 00:00:00">2022-02-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">
+​	以加性噪声为例，图像去噪的主要目的是从有噪声 n\textbf{n}n 的图像 y=x+n\textbf{y} = \textbf{x} + \textbf{n}y=x+n 中恢复得到一张干净的图像 x\textbf{x}x，但是由于 $\textbf{x} $ 和 n\textbf{n}n 的不确定性，二者是很难被分离开的. 传统的去噪方法NLM、BM3D和小波变换等利用图像和噪声模型的先验知识进行去噪，DNN则是从训练数据中学 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/02/20/tools-weblists/" title="-lks-良心到难以置信的网站推荐"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="-lks-良心到难以置信的网站推荐"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/20/tools-weblists/" title="-lks-良心到难以置信的网站推荐">-lks-良心到难以置信的网站推荐</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-19T16:00:00.000Z" title="发表于 2022-02-20 00:00:00">2022-02-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">
 本页面网站收录自B站UP主 -LKs-的 良心到难以置信的网站推荐系列，为防止一些特殊原因导致页面失效，特将该网站收录自本人blog下面，仅限私域流量的朋友交流学习使用。任何关于版权的问题在此免责，仅供归档，有问题请从主页联系我
 
 第十期
@@ -201,14 +204,14 @@ Vtuber大数据
 Coursera
 蒸汽机风格迁移
 AI生成头像·WifuLab
-AI生成头像 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/07/16/paper-20210716/" title="【论文阅读·SmartContract】Making Smart Contracts Smarter"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/%20typora-user-images/image-20210717173728032.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·SmartContract】Making Smart Contracts Smarter"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/16/paper-20210716/" title="【论文阅读·SmartContract】Making Smart Contracts Smarter">【论文阅读·SmartContract】Making Smart Contracts Smarter</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-07-15T16:00:00.000Z" title="发表于 2021-07-16 00:00:00">2021-07-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+AI生成头像 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/07/16/paper-20210716/" title="【论文阅读·SmartContract】Making Smart Contracts Smarter"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/%20typora-user-images/image-20210717173728032.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·SmartContract】Making Smart Contracts Smarter"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/16/paper-20210716/" title="【论文阅读·SmartContract】Making Smart Contracts Smarter">【论文阅读·SmartContract】Making Smart Contracts Smarter</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-07-15T16:00:00.000Z" title="发表于 2021-07-16 00:00:00">2021-07-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Loi Luu, Duc-Hiep Chu, Hrishi Olickel, Prateek Saxena, Aquinas Hobor. 来自NUS团队
 【一句话总结】：针对以太坊智能合约的漏洞提供了一种开源检测工具作改进建议.
 【Introduction】
 ​		2009年，中本聪向全世界引入了比特币，自此加密货币得到的广泛的发展与应用. 以比特币为代表的加密货币具有去中心化的特性，由网络中所有的节点(即用户)通过运行共识协议维护数据的安全可靠性. 在paper提出的2016年，智能合约成为了比特币的发展方向.
-​		智能合约就是**一段运行在区块链上的程序，并由共识协议保证其正确执行. ** 目前智能合约在应用层面上主要以 solidity 语言编写，可以规定交易过程中的任何规则(比如，合约可以规定某事件自动触发转账). 因此，智能合约可以在各种 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/30/paper-20210630/" title="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/%20typora-user-images/image-20210630230353215.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/30/paper-20210630/" title="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition">【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-29T16:00:00.000Z" title="发表于 2021-06-30 00:00:00">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		智能合约就是**一段运行在区块链上的程序，并由共识协议保证其正确执行. ** 目前智能合约在应用层面上主要以 solidity 语言编写，可以规定交易过程中的任何规则(比如，合约可以规定某事件自动触发转账). 因此，智能合约可以在各种 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/30/paper-20210630/" title="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/%20typora-user-images/image-20210630230353215.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/30/paper-20210630/" title="【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition">【论文阅读·DeepLearning】Deep Residual Learning for Image Recognition</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-29T16:00:00.000Z" title="发表于 2021-06-30 00:00:00">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, 来自微软研究院
@@ -216,7 +219,7 @@ AI生成头像 ...</div></div></div><div class="recent-post-item"><div class="po
 【Introduction】
 ​		深度卷积神经网络在图像分类应用上有很大的突破. 通过堆叠更多的层，使得深度神经网络以“端到端”的方式构成了不同层级的特征分类器，网络的深度对于模型学习效果的影响很大. 于是就有这样一个问题：“层数越多的网络，学习效果就越好吗？”
 ​		随着深度的增加，一些显著的问题就会暴露出来，最著名的是“梯度消失” 和 “梯度爆炸” 问题，从训练一开始就会阻碍网络的训练. 这两个问题使用 “初始归一化” 和 “中间归一化” 的方法即可在很大程度上得到解决，使得具有数十层神经网络在SGD进行BP优化时可以收敛.
-​		然而，当网络层数加深时，容易发生 “退化(degradati ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/24/paper-20210624/" title="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210626150623045.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/24/paper-20210624/" title="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work">【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-23T16:00:00.000Z" title="发表于 2021-06-24 00:00:00">2021-06-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		然而，当网络层数加深时，容易发生 “退化(degradati ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/24/paper-20210624/" title="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210626150623045.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/24/paper-20210624/" title="【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work">【论文阅读·推荐系统】Matching User with Item Set:Collaborative Bundle Recommendation with Deep Attention Work</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-23T16:00:00.000Z" title="发表于 2021-06-24 00:00:00">2021-06-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Liang Chen, Yang Liu, Xiangnan He, Lianli Gao, and Zibin Zheng.
@@ -224,35 +227,35 @@ AI生成头像 ...</div></div></div><div class="recent-post-item"><div class="po
 【Introduction】
 ​		推荐系统的发展对于减轻信息过载、提升用户体验、增加服务商流量而言，已被证明为一种非常有效的方法. 类似于信息检索，推荐本质上就是估计用户和商品之间的匹配分数. 在现实世界中，应用提供商需要向用户推荐一组而非单个物品，比如网易云音乐的每日推荐、家具的套装等等，这种推荐任务我们称之为 “捆绑推荐”.
 
-​		在电商平台，捆绑推荐常用于促销活动中，比如可以以一定折扣购买一组商品，从而提高那些很少被单独购买的商品的曝光量. 常用的捆绑推荐策略是按照某种准则将不同商品合为一组（如上图的电子产品按照功能互补关系进行捆绑销售） ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/22/paper-20210622/" title="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/USaQ-hcaquev2296731.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/22/paper-20210622/" title="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network">【论文阅读·BlockChain】Information Propagation in the Bitcoin Network</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-21T16:00:00.000Z" title="发表于 2021-06-22 00:00:00">2021-06-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		在电商平台，捆绑推荐常用于促销活动中，比如可以以一定折扣购买一组商品，从而提高那些很少被单独购买的商品的曝光量. 常用的捆绑推荐策略是按照某种准则将不同商品合为一组（如上图的电子产品按照功能互补关系进行捆绑销售） ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/22/paper-20210622/" title="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/USaQ-hcaquev2296731.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/22/paper-20210622/" title="【论文阅读·BlockChain】Information Propagation in the Bitcoin Network">【论文阅读·BlockChain】Information Propagation in the Bitcoin Network</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-21T16:00:00.000Z" title="发表于 2021-06-22 00:00:00">2021-06-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Christian Decker, Roger Wattenhofer
 【一句话总结】：从网络角度分析了比特币的消息传播流程和它的局限性，并提出了加速传播方法.
 【Introduction】
 ​		**比特币(Bitcoin)**是全球真正意义上的第一个全球性的去中心化数字货币系统，它承载着与其他货币一样作为一般等价物的本质，但不由任何机构颁发.  自从2008年末期诞生以来，其交易值和交易数量越来越大. 由于在比特币发行以前，交易系统的研究更关注于构建可信任的中心化发行人，或创建用户与用户之间的信赖关系，仍由发行人对交易进行清算.
-​		比特币通常被视为现金，但其实功能已经超越了现金的范畴. 比特币的所有交易历史公开，并且在全球范围内的交易速度都非常快，提供了智能财产、小额支付、合同、托管交易等功能用于调解交易纠纷. 目前已有部分公司允许使用比特币进 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/20/paper-20210620/" title="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210623185753305.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/20/paper-20210620/" title="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks">【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-19T16:00:00.000Z" title="发表于 2021-06-20 00:00:00">2021-06-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		比特币通常被视为现金，但其实功能已经超越了现金的范畴. 比特币的所有交易历史公开，并且在全球范围内的交易速度都非常快，提供了智能财产、小额支付、合同、托管交易等功能用于调解交易纠纷. 目前已有部分公司允许使用比特币进 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/20/paper-20210620/" title="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210623185753305.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/20/paper-20210620/" title="【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks">【论文阅读·SmartContract】Smart Contract Vulnerability Detection Using Graph Neural Networks</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-19T16:00:00.000Z" title="发表于 2021-06-20 00:00:00">2021-06-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Yuan Zhuang, Zhenguang Liu, Peng Qian, Qi Liu, Xiang Wang, Qinming He
 【一句话总结】：将智能合约代码转成图，利用图神经网络检测智能合约漏洞.
 【Introduction】
 ​		区块链今年来发展非常火热，具有去中心化、防篡改的特性，本质上是一个分布式共享的交易账本. 智能合约，是一种自动运行在区块链上的程序，它旨在以信息化方式传播、验证、执行合同. 不过对于设计存在缺陷的智能合约来说，非常容易遭到网络攻击. 据SlowMist Hacked的统计，由于智能合约的漏洞问题，区块链网络已损失超过10亿美元.
-​		现有的智能合约漏洞检测方法依靠于符号执行等动态执行方法，但是存在两个缺陷：目前的检测模式是有限的，通常不可修改，这对于智能合约越来越多的今天，一些复杂的异常模式无法被检测到，且 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/18/paper-20210618/" title="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210621003301271.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/18/paper-20210618/" title="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices">【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-17T16:00:00.000Z" title="发表于 2021-06-18 00:00:00">2021-06-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		现有的智能合约漏洞检测方法依靠于符号执行等动态执行方法，但是存在两个缺陷：目前的检测模式是有限的，通常不可修改，这对于智能合约越来越多的今天，一些复杂的异常模式无法被检测到，且 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/06/18/paper-20210618/" title="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210621003301271.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/18/paper-20210618/" title="【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices">【论文阅读·AIOps】Seer:Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-17T16:00:00.000Z" title="发表于 2021-06-18 00:00:00">2021-06-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Yu Gan，Yanqi Zhang, Kelvin Hu, Dailun Cheng, Yuan He, Meghan Pancholi, Christina Delimitrou, 来自Cornell University团队
 【一句话总结】：利用AI模型预测并防止微服务集群的QoS异常.
 【Introduction】
 ​		服务质量(Quality of Service, QoS)，严格限制了云计算服务的吞吐量.  要在性能限制下进行应用的敏捷开发迭代，微服务概念近年来越来越火热. 与其将所有功能包含在一个庞大的二进制文件中作为单体服务(Monolith)，耦合数百个关注单一功能的微服务自然是一个更好的选择，既可以加速应用的开发部署，又可以隔离环境进行调试.
-​		由于微服务之间的依赖关系，每个单独的微服务要求的尾部延迟要比传统云服务的单体应用高 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/16/paper-20210616/" title="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210616154421984.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/16/paper-20210616/" title="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation">【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-15T16:00:00.000Z" title="发表于 2021-06-16 00:00:00">2021-06-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
+​		由于微服务之间的依赖关系，每个单独的微服务要求的尾部延迟要比传统云服务的单体应用高 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/16/paper-20210616/" title="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora-user-images/image-20210616154421984.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/16/paper-20210616/" title="【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation">【论文阅读·推荐系统】Modelling High-Order Social Relations for Item Recommendation</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-15T16:00:00.000Z" title="发表于 2021-06-16 00:00:00">2021-06-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></span></div><div class="content">
 以下解读均为本人个人见解，如有曲解或造成不必要的麻烦，欢迎联系我 nexisato0810@gmail.com 进行修改。正文内容中的“作者”均为paper作者本人，我的观点会由“我”或在括号“()”内显式注明。
 
 【Paper作者】：Yang Liu, Liang Chen, Xiangnan He, Jiaying Peng, Zibin Zheng, Jie Tang，来自中山大学团队
 【一句话总结】：利用GCN和注意力机制做了一个推荐系统框架，能够让我的n阶朋友影响到我的喜好.
 【Introduction】
 ​		在目前的社交网络上，推荐系统是应用十分广泛的一种技术。由于类似的用户群体可能表现出相同的购买行为，因而关键在于如何使用集体智慧，这就衍生出了两种主要的推荐技术：基于内容的推荐、基于用户/物品的协同过滤推荐，这两种技术考虑到了用户购买行为之间、物品之间的相似性，但在实际的场景中，“朋友”的推荐会影响到我们的购买行为，由此引出了利用社会关系构建的推荐系统。
-​		现有的基于社会关系构建的推荐系统（如TrustSVD）只考虑到了一阶人际关系，没有将所谓“口口相传”的传播链 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/06/csapp-attacklab/" title="CSAPP Lab (03)-Attack Lab"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (03)-Attack Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/06/csapp-attacklab/" title="CSAPP Lab (03)-Attack Lab">CSAPP Lab (03)-Attack Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-05T16:00:00.000Z" title="发表于 2021-04-06 00:00:00">2021-04-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
+​		现有的基于社会关系构建的推荐系统（如TrustSVD）只考虑到了一阶人际关系，没有将所谓“口口相传”的传播链 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/06/csapp-attacklab/" title="CSAPP Lab (03)-Attack Lab"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (03)-Attack Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/06/csapp-attacklab/" title="CSAPP Lab (03)-Attack Lab">CSAPP Lab (03)-Attack Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-05T16:00:00.000Z" title="发表于 2021-04-06 00:00:00">2021-04-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
 本文记录了CSAPP配套实验——Attack Lab的详情WriteUp
 
 
@@ -280,7 +283,7 @@ Return-Oriented-Programming（面向返回编程）——phase4-5，对应文件
 
 A：hex2raw的使用
 ​		hex2raw接收字节序列格式的输入，如&quot;30 31 32 33 34 35&quot;代表输入数字&quot;012345&quot;，支持/**/形式的注释，假设我们现在已经写好一个字节序列格式的文本文件exploit.txt，我们可以用如下几种方式向ctarget或rtarget输入该序列。
-unix> c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/26/csapp-bomblab/" title="CSAPP Lab (02)-Bomb Lab"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (02)-Bomb Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/26/csapp-bomblab/" title="CSAPP Lab (02)-Bomb Lab">CSAPP Lab (02)-Bomb Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-25T16:00:00.000Z" title="发表于 2021-03-26 00:00:00">2021-03-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
+unix> c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/26/csapp-bomblab/" title="CSAPP Lab (02)-Bomb Lab"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (02)-Bomb Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/26/csapp-bomblab/" title="CSAPP Lab (02)-Bomb Lab">CSAPP Lab (02)-Bomb Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-25T16:00:00.000Z" title="发表于 2021-03-26 00:00:00">2021-03-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
 本文记录了CSAPP配套实验——Bomb Lab的详情WriteUp
 
 
@@ -340,7 +343,7 @@ finish
 运行至当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。
 
 
-call fu ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/03/11/interview-20210311/" title="2021暑实投递记录(持久更新)"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/InterView.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021暑实投递记录(持久更新)"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/11/interview-20210311/" title="2021暑实投递记录(持久更新)">2021暑实投递记录(持久更新)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-10T16:00:00.000Z" title="发表于 2021-03-11 00:00:00">2021-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></span></div><div class="content">
+call fu ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/03/11/interview-20210311/" title="2021暑实投递记录(持久更新)"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/InterView.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021暑实投递记录(持久更新)"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/11/interview-20210311/" title="2021暑实投递记录(持久更新)">2021暑实投递记录(持久更新)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-10T16:00:00.000Z" title="发表于 2021-03-11 00:00:00">2021-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></span></div><div class="content">
 可以明显感觉到，最近每的心态和压力都异常大。既要起早贪黑没日没夜弥补自己基础知识，又看着一个接一个同学收到offer，导致自己每天都处在自我怀疑的纠结状态中。至少到目前为止，这是我20年来最艰难的时期，比以往任何小打小闹的挫折都要正式。这个大三，我跨过了无数槛，走出了一个又一个的舒适区，我不知道最终结果如何，但这就是我最切身难忘的时期，不得不面对的现实。无所谓结果如何，吸取到教训并可以快速及时改正，这段时间就没白折腾。
 
 ​
@@ -349,7 +352,7 @@ call fu ...</div></div></div><div class="recent-post-item"><div class="post_cove
 ​        其实复盘再看的话这不是一个科学的做法，让你加班面试一个five你会抱着好心情去面？严格来说并不难，但是一天对线两次确实挺消耗体力的，况且到二面结尾的时候面试官直接点破了“我赶时间”…也算一个教训了。这次准备的并不充分，因此希望大家准备好这些问题再去投简历：
 
 
-明确好投递岗位的具体工作内容及其相关的技术栈（比如DB不熟的话不要 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/07/tech-xduautoreport/" title="AutoXDUNCovReport——图文教程"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/AutoXDU.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoXDUNCovReport——图文教程"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/07/tech-xduautoreport/" title="AutoXDUNCovReport——图文教程">AutoXDUNCovReport——图文教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-06T16:00:00.000Z" title="发表于 2021-03-07 00:00:00">2021-03-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">
+明确好投递岗位的具体工作内容及其相关的技术栈（比如DB不熟的话不要 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/07/tech-xduautoreport/" title="AutoXDUNCovReport——图文教程"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/AutoXDU.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoXDUNCovReport——图文教程"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/07/tech-xduautoreport/" title="AutoXDUNCovReport——图文教程">AutoXDUNCovReport——图文教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-06T16:00:00.000Z" title="发表于 2021-03-07 00:00:00">2021-03-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">
 本文使用Repo：https://github.com/Robotxm/AutoXduNCovReport
 技术支持：@Robotxm
 
@@ -383,7 +386,7 @@ CAMPUS：-c S（北校区请设定为-c N，疫情通请设定为空值）
 
 点击导航栏的Actions
 
-如果原作者的donet.yam ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/03/05/csapp-datalab/" title="CSAPP Lab (01)-Data Lab"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (01)-Data Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/05/csapp-datalab/" title="CSAPP Lab (01)-Data Lab">CSAPP Lab (01)-Data Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-04T16:00:00.000Z" title="发表于 2021-03-05 00:00:00">2021-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
+如果原作者的donet.yam ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/03/05/csapp-datalab/" title="CSAPP Lab (01)-Data Lab"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/CSAPP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSAPP Lab (01)-Data Lab"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/05/csapp-datalab/" title="CSAPP Lab (01)-Data Lab">CSAPP Lab (01)-Data Lab</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-04T16:00:00.000Z" title="发表于 2021-03-05 00:00:00">2021-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/">CSAPP</a></span></div><div class="content">
 update: 2022-07-19：研究生入学前重新修炼一遍内功，以及在WSL2上使用Ubuntu22.04进行重新实验
 
 
@@ -411,13 +414,13 @@ btest.h	- Used to build btest
 decl.c	- Used to build btest
 tests.c       - Used to build btest
 tests-header.c- Used to build btest
-dlc*		- Rule checking compiler binary (data lab c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/04/diary-20210304/" title="站在交叉路口前"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="站在交叉路口前"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/04/diary-20210304/" title="站在交叉路口前">站在交叉路口前</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-03T16:00:00.000Z" title="发表于 2021-03-04 00:00:00">2021-03-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
+dlc*		- Rule checking compiler binary (data lab c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/03/04/diary-20210304/" title="站在交叉路口前"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="站在交叉路口前"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/04/diary-20210304/" title="站在交叉路口前">站在交叉路口前</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-03T16:00:00.000Z" title="发表于 2021-03-04 00:00:00">2021-03-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
 ​		很巧的一天，正在归档整理blog的时候xm突然问我要不要聚餐。当时我还一愣找谁聚，但是当时他只是催我赶紧的，所以也没多想直接光速蹭饭(虽然最终也没有蹭到多少就是了。直到赶到之后才发现原来是工作室的老朋友们好久不见，趁着大鸡爪子毕业前，趁着xm还没回字节，一起聚个餐。
 
 有一天，时间真的能倒退
 ​		认识他们刚不久，发现我们现在都已经大三了。大学生活已经过去了两年半，其中有半年疫情在家gap，也不能说完全荒废，起码让我们这一代人的本科生涯几乎断档半年。回想起学长们例会布置任务，线下疯狂对线，彷佛这一切都发生在昨天。想想其实真的蛮遗憾，自从认识他们以来从来没有一次，像今天这样可以聚在一起促膝长谈。
 ​		其实从他们口中也不难了解到，我们大多数人的本科生涯，尤其是在西电，几乎完全没有认真考虑过职业规划的问题。如xm这样能够独立开发出服务于全校同学的优质原生APP的人都是少数（而且用爱发电不拿它水比赛之类的orz…）。好多人，到头来只是会做个毫无实际用途的题罢了(如果你有学术理想的话可以无视这段话，当然骂我我也不介意)。
-​		有时候想，自己当了两年的做题家也并非一无所有。认识了一群有 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/02/22/0-newblogbyhexo/" title="Hello, Blog转移"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/SmallTech.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello, Blog转移"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/22/0-newblogbyhexo/" title="Hello, Blog转移">Hello, Blog转移</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-22T12:06:50.000Z" title="发表于 2021-02-22 20:06:50">2021-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">前言
+​		有时候想，自己当了两年的做题家也并非一无所有。认识了一群有 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/02/22/0-newblogbyhexo/" title="Hello, Blog转移"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/SmallTech.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello, Blog转移"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/22/0-newblogbyhexo/" title="Hello, Blog转移">Hello, Blog转移</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-22T12:06:50.000Z" title="发表于 2021-02-22 20:06:50">2021-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">前言
 不知道折腾了多少次这个nt玩意了，原来在阿里云申请的域名和ECS已经快过期了，而且一大坨乱七八糟的代理设置没有搞好，正好趁机迁移一下(p.s.包括前端练习生计划的那个vuepress)
 总之，敢放出来就不怕看咯orz
 构建方式采用 Github Pages + Hexo
@@ -438,12 +441,12 @@ Generate static files
 $ hexo g[enerate]
 More info: Generating
 Deploy to remote sites
-$ hexo d[ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/04/19/diary-20200419/" title="奖学金与综测的二三事"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="奖学金与综测的二三事"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/19/diary-20200419/" title="奖学金与综测的二三事">奖学金与综测的二三事</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-18T16:00:00.000Z" title="发表于 2020-04-19 00:00:00">2020-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
+$ hexo d[ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/04/19/diary-20200419/" title="奖学金与综测的二三事"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="奖学金与综测的二三事"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/19/diary-20200419/" title="奖学金与综测的二三事">奖学金与综测的二三事</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-18T16:00:00.000Z" title="发表于 2020-04-19 00:00:00">2020-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
 本文归档自http://120.26.185.209/index.php/2020/04/19/%e5%a5%96%e5%ad%a6%e9%87%91%e4%b8%8e%e7%bb%bc%e6%b5%8b%e7%9a%84%e4%ba%8c%e4%b8%89%e4%ba%8b/
 
 ​		前段时间去NTU访学拿到的补助终于发下来了23333，一共8k，对我现在来说还是蛮多的。我并不想把它当成生活费或者学费去垫，很想入一台Surface Pro轻度使用。对于我这样一个经常背电脑出去浪的人来说，6斤重的游戏本简直就是噩梦好么…而且很不辛的是为了背这坨重铁我已经搞坏了两个书包了orz…其中一个还是NTU发的劣质包。
 ​		8k块以奖学金的形式发放，提到这个我就想起来同样8k的国奖。
-​		去年综合测评的时候我自己像傻了一样疯狂地扣分扣分，有一些该加的也没有加。XDU其实蛮穷的，相较于其他985强校的奖学金力度我们这个简直就是打发要饭的…说难听了，这不该，对不起我冲动了。事实证明我还蛮幸运的，27分自评分数没打再加上10几分的综合模块分忘记加的前提下还能混到一个三流专业的三等奖学金第一名，即便 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/04/09/diary-20200408/" title="这是一次文艺复兴之旅"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="这是一次文艺复兴之旅"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/09/diary-20200408/" title="这是一次文艺复兴之旅">这是一次文艺复兴之旅</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-08T16:00:00.000Z" title="发表于 2020-04-09 00:00:00">2020-04-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
+​		去年综合测评的时候我自己像傻了一样疯狂地扣分扣分，有一些该加的也没有加。XDU其实蛮穷的，相较于其他985强校的奖学金力度我们这个简直就是打发要饭的…说难听了，这不该，对不起我冲动了。事实证明我还蛮幸运的，27分自评分数没打再加上10几分的综合模块分忘记加的前提下还能混到一个三流专业的三等奖学金第一名，即便 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/04/09/diary-20200408/" title="这是一次文艺复兴之旅"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/Diary1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="这是一次文艺复兴之旅"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/09/diary-20200408/" title="这是一次文艺复兴之旅">这是一次文艺复兴之旅</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-04-08T16:00:00.000Z" title="发表于 2020-04-09 00:00:00">2020-04-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">
 ​		本文归档自http://120.26.185.209/index.php/2020/04/09/%e8%bf%99%e6%98%af%e4%b8%80%e6%ac%a1%e6%96%87%e8%89%ba%e5%a4%8d%e5%85%b4%e4%b9%8b%e6%97%85/
 
 ​		Blog这种东西在我小学二年级的时候就已经玩了个遍，但是很不幸，曾经的巨头网易在去年宣告停止服务，之前的文章也没有办法归档，不知道失去了多少有价值回忆。
@@ -455,7 +458,7 @@ $ hexo d[ ...</div></div></div><div class="recent-post-item"><div class="post_co
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><span class="card-category-list-name">基础知识</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/CSAPP/"><span class="card-category-list-name">CSAPP</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="card-category-list-name">技术</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%BA%E6%96%87/"><span class="card-category-list-name">论文</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/"><span class="card-category-list-name">面经</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CNN/" style="font-size: 1.1em; color: #999">CNN</a> <a href="/tags/CV/" style="font-size: 1.1em; color: #999">CV</a> <a href="/tags/GNN/" style="font-size: 1.1em; color: #999">GNN</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 1.37em; color: #99a4b2">区块链</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8E%BB%E5%99%AA/" style="font-size: 1.1em; color: #999">图像去噪</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 1.1em; color: #999">实习</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.23em; color: #999ea6">技术</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">技术 - 工具</a> <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" style="font-size: 1.23em; color: #999ea6">推荐系统</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 1.23em; color: #999ea6">智能合约</a> <a href="/tags/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/" style="font-size: 1.1em; color: #999">智能运维</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">深度学习</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%83%B3/" style="font-size: 1.1em; color: #999">生活感想</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 1.5em; color: #99a9bf">论文</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.37em; color: #99a4b2">随笔</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 1.1em; color: #999">面经</a></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">18</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-10-10T08:44:25.116Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Nexisato</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 1.5em; color: #99a9bf">论文</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 1.37em; color: #99a4b2">区块链</a> <a href="/tags/GNN/" style="font-size: 1.1em; color: #999">GNN</a> <a href="/tags/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/" style="font-size: 1.1em; color: #999">智能运维</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 1.1em; color: #999">面经</a> <a href="/tags/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">技术 - 工具</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">深度学习</a> <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" style="font-size: 1.23em; color: #999ea6">推荐系统</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%83%B3/" style="font-size: 1.1em; color: #999">生活感想</a> <a href="/tags/CV/" style="font-size: 1.1em; color: #999">CV</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.37em; color: #99a4b2">随笔</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%8E%BB%E5%99%AA/" style="font-size: 1.1em; color: #999">图像去噪</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 1.23em; color: #999ea6">智能合约</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.23em; color: #999ea6">技术</a> <a href="/tags/CNN/" style="font-size: 1.1em; color: #999">CNN</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 1.1em; color: #999">实习</a></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">18</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-10-10T15:14:43.650Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/TopImages/bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Nexisato</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
@@ -473,37 +476,33 @@ function panguInit () {
   }
 }
 
-document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
-
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    window.typed = new Typed("#subtitle", {
-      strings: ["尺有所短，寸有所长","Where shall we begin?","Unstoppable"],
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
       startDelay: 300,
       typeSpeed: 150,
       loop: true,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '尺有所短，寸有所长'
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
   }
 }
-
-if (true) {
-  if (typeof Typed === 'function') {
-    subtitleType()
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["尺有所短，寸有所长","Where shall we begin?","Unstoppable"])
   } else {
-    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+    document.getElementById("subtitle").textContent = "尺有所短，寸有所长"
   }
-} else {
-  subtitleType()
-}</script></div></div></body></html>
+}
+typedJSFn.run(subtitleType)</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
