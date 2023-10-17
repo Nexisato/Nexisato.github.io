@@ -167,7 +167,7 @@
 <li><strong>GDB调试器的使用</strong></li>
 </ul>
 <p>对于C/C++程序的调试，需要在编译前加上<code>-g</code>。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$g</span>++ -g test.cpp -o <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$g</span>++ <span class="token parameter variable">-g</span> test.cpp <span class="token parameter variable">-o</span> <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>接下来开启<code>gdb</code>调试器调试程序：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$gdb</span> <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启用<code>gdb</code>进入交互模式后，可以用如下命令调试程序</p>
@@ -246,7 +246,7 @@
 <p>程序读取<code>input</code>字符串，如果输入<code>正确的</code>字符串，那么就拆解成功一个炸弹，<s>否则你就会像下图一样被blown up</s></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://msigl62m-1258130641.cos.ap-shanghai.myqcloud.com/typora_image_2021_03_26/image-20210326173121180.png" alt="image-20210326173121180"></p>
 <p>先执行下面的指令得到程序的反汇编代码，然后我们进行愉快的拆解</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$objdump</span> -d bomb <span class="token operator">></span> bomb.asm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$objdump</span> <span class="token parameter variable">-d</span> bomb <span class="token operator">></span> bomb.asm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>
 <h4 id="phase1">phase1</h4>

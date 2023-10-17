@@ -180,12 +180,12 @@
 unix<span class="token operator">></span> ./ctarget <span class="token operator">&lt;</span> exploit_raw.txt				/* I/O重定向 */
 ---------或---------
 unix<span class="token operator">></span> ./hex2raw <span class="token operator">&lt;</span> exploit.txt <span class="token operator">></span> exploit_raw.txt
-unix<span class="token operator">></span> ./ctarget -i exploit_raw.txt -q			/* -i表示文件输入，-q表示脱机使用 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+unix<span class="token operator">></span> ./ctarget <span class="token parameter variable">-i</span> exploit_raw.txt <span class="token parameter variable">-q</span>			/* -i表示文件输入，-q表示脱机使用 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">unix<span class="token operator">></span> ./hex2raw <span class="token operator">&lt;</span> exploit.txt <span class="token operator">></span> out			/* 转换为二进制文件out */<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="B：生成字节码Byte-Codes">B：生成字节码Byte Codes</h4>
 <p>​		假设我们事先已生成汇编代码<code>example.s</code>，可以以如下方式得到机器码</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">unix<span class="token operator">></span> gcc -c example.s
-unix<span class="token operator">></span> objdump -d example.o <span class="token operator">></span> example.d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">unix<span class="token operator">></span> gcc <span class="token parameter variable">-c</span> example.s
+unix<span class="token operator">></span> objdump <span class="token parameter variable">-d</span> example.o <span class="token operator">></span> example.d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>​		在文件<code>example.d</code>即可看见对应的机器码。</p>
 <hr>
 <h3 id="WriteUp">WriteUp</h3>
